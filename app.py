@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 
 # ---------------- CONFIG ----------------
@@ -35,12 +35,8 @@ h1, h2 { color: #1DB954; }
 """, unsafe_allow_html=True)
 
 # ---------------- LOAD MODEL ----------------
-with open("model/spotify_churn_model.pkl", "rb") as f:
-    model = pickle.load(f)
-
-with open("model/feature_names.pkl", "rb") as f:
-    feature_names = pickle.load(f)
-
+model = joblib.load("model/spotify_churn_model.pkl")
+feature_names = joblib.load("model/feature_names.pkl")
 # ---------------- HEADER ----------------
 st.markdown("""
 <h1>🎧 Spotify Churn Analytics Dashboard</h1>
